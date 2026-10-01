@@ -23,11 +23,12 @@ public class MarkShipmentInTransitUseCase implements MarkShipmentInTransitPort {
 
     @Override
     public Shipment markInTransit(UUID id) {
+        log.info("Iniciando cambio de estado a IN_TRANSIT. shipmentId={}", id);
         Shipment shipment = persistencePort.findById(id).orElseThrow(() -> new ShipmentNotFoundException(id));
         LocalDateTime now = LocalDateTime.now(clock);
         shipment.transitionTo(ShipmentStatus.IN_TRANSIT, now);
         Shipment saved = persistencePort.save(shipment);
-        log.info("shipment marked in transit shipmentId={} trackingNumber={} status={}",
+        log.info("Envio marcado en transito. shipmentId={} trackingNumber={} status={}",
                 saved.getId(), saved.getTrackingNumber(), saved.getStatus());
         eventPublisherPort.publish(ShipmentEventFactory.create(saved, ShipmentEventType.SHIPMENT_IN_TRANSIT, now));
         return saved;

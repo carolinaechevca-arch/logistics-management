@@ -9,13 +9,16 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.config.RetryInterceptorBuilder;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.retry.MessageRecoverer;
 import org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer;
 import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
+@Slf4j
 public class RabbitConfig {
     @Bean
     TopicExchange shipmentExchange() {
@@ -59,11 +62,25 @@ public class RabbitConfig {
     }
 
     @Bean
-    Advice notificationRetryAdvice() {
+    MessageRecoverer notificationMessageRecoverer() {
+        RejectAndDontRequeueRecoverer delegate = new RejectAndDontRequeueRecoverer();
+        return (message, cause) -> {
+            log.error("DLQ: RabbitMQ rechazo definitivamente el mensaje. "
+                            + "exchange={} routingKey={} consumerQueue={} causa={} mensaje={}",
+                    message.getMessageProperties().getReceivedExchange(),
+                    message.getMessageProperties().getReceivedRoutingKey(),
+                    message.getMessageProperties().getConsumerQueue(),
+                    cause.getClass().getSimpleName(), cause.getMessage());
+            delegate.recover(message, cause);
+        };
+    }
+
+    @Bean
+    Advice notificationRetryAdvice(MessageRecoverer notificationMessageRecoverer) {
         return RetryInterceptorBuilder.stateless()
                 .maxRetries(RabbitTopology.MAX_PROCESSING_ATTEMPTS - 1)
                 .backOffOptions(1000, 2.0, 5000)
-                .recoverer(new RejectAndDontRequeueRecoverer())
+                .recoverer(notificationMessageRecoverer)
                 .build();
     }
 

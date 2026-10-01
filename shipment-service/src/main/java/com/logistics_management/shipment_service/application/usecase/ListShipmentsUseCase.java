@@ -14,11 +14,11 @@ public class ListShipmentsUseCase implements ListShipmentsPort {
 
     @Override
     public ShipmentPage list(int page, int size, ShipmentStatus status) {
-        log.info("shipment list requested page={} size={} status={}", page, size, status);
+        log.info("Listando envios. page={} size={} status={}", page, size, status);
         ShipmentPage result = status == null
                 ? persistencePort.findAll(page, size)
                 : persistencePort.findByStatus(status, page, size);
-        log.info("shipment list completed page={} returned={} totalElements={}",
+        log.info("Lista de envios obtenida. page={} devueltos={} totalElements={}",
                 result.getPage(), result.getContent().size(), result.getTotalElements());
         return result;
     }

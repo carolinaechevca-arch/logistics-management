@@ -23,6 +23,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -43,6 +44,7 @@ import java.util.UUID;
 @Validated
 @RequestMapping("/api/v1/shipments")
 @RequiredArgsConstructor
+@Slf4j
 public class ShipmentController {
     private final CreateShipmentPort createShipmentPort;
     private final GetShipmentPort getShipmentPort;
@@ -65,15 +67,24 @@ public class ShipmentController {
             @Parameter(description = "Unique key for safely retrying this creation request", required = true)
             String idempotencyKey,
             @Valid @RequestBody CreateShipmentRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(mapper.toResponse(createShipmentPort.create(mapper.toCommand(idempotencyKey, request))));
+        log.info("Solicitud recibida para crear un envio. idempotencyKey={}",
+                idempotencyKey);
+        ShipmentResponse response = mapper.toResponse(
+                createShipmentPort.create(mapper.toCommand(idempotencyKey, request)));
+        log.info("Respuesta preparada. shipmentId={} trackingNumber={} status={}",
+                response.id(), response.trackingNumber(), response.status());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a shipment by id")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "Shipment found"), @ApiResponse(responseCode = "404", description = "Shipment not found")})
     public ShipmentResponse getById(@PathVariable UUID id) {
-        return mapper.toResponse(getShipmentPort.getById(id));
+        log.info("Solicitud recibida para consultar envio. shipmentId={}", id);
+        ShipmentResponse response = mapper.toResponse(getShipmentPort.getById(id));
+        log.info("Respuesta preparada. shipmentId={} status={}",
+                response.id(), response.status());
+        return response;
     }
 
     @GetMapping
@@ -81,6 +92,8 @@ public class ShipmentController {
     public ShipmentPageResponse list(@RequestParam(defaultValue = "0") @Min(0) int page,
                                      @RequestParam(defaultValue = "10") @Min(1) @Max(100) int size,
                                      @RequestParam(required = false) ShipmentStatus status) {
+        log.info("Solicitud recibida para listar envios. page={} size={} status={}",
+                page, size, status);
         return mapper.toResponse(listShipmentsPort.list(page, size, status));
     }
 
@@ -88,24 +101,28 @@ public class ShipmentController {
     @Operation(summary = "Dispatch a created shipment")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "Shipment dispatched"), @ApiResponse(responseCode = "404", description = "Shipment not found"), @ApiResponse(responseCode = "409", description = "Invalid transition")})
     public ShipmentResponse dispatch(@PathVariable UUID id) {
+        log.info("Solicitud recibida para despachar envio. shipmentId={}", id);
         return mapper.toResponse(dispatchShipmentPort.dispatch(id));
     }
 
     @PatchMapping("/{id}/in-transit")
     @Operation(summary = "Mark a dispatched shipment as in transit")
     public ShipmentResponse markInTransit(@PathVariable UUID id) {
+        log.info("Solicitud recibida para marcar envio en transito. shipmentId={}", id);
         return mapper.toResponse(markShipmentInTransitPort.markInTransit(id));
     }
 
     @PatchMapping("/{id}/deliver")
     @Operation(summary = "Deliver a shipment in transit")
     public ShipmentResponse deliver(@PathVariable UUID id) {
+        log.info("Solicitud recibida para entregar envio. shipmentId={}", id);
         return mapper.toResponse(deliverShipmentPort.deliver(id));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Logically cancel a created shipment")
     public ShipmentResponse cancel(@PathVariable UUID id) {
+        log.info("Solicitud recibida para cancelar envio. shipmentId={}", id);
         return mapper.toResponse(cancelShipmentPort.cancel(id));
     }
 }

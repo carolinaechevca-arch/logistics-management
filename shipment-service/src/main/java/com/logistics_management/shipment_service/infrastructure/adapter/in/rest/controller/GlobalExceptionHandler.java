@@ -25,14 +25,16 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
     @ExceptionHandler(ShipmentNotFoundException.class)
     ResponseEntity<ApiErrorResponse> notFound(RuntimeException exception, HttpServletRequest request) {
-        log.warn("shipment request not found path={} message={}", request.getRequestURI(), exception.getMessage());
+        log.warn("No se encontro el recurso solicitado. ruta={} mensaje={}",
+                request.getRequestURI(), exception.getMessage());
         return response(HttpStatus.NOT_FOUND, exception.getMessage(), request);
     }
 
     @ExceptionHandler({InvalidShipmentStatusTransitionException.class, ShipmentCannotBeCancelledException.class,
             DuplicateTrackingNumberException.class, IdempotencyKeyConflictException.class})
     ResponseEntity<ApiErrorResponse> conflict(RuntimeException exception, HttpServletRequest request) {
-        log.warn("shipment business conflict path={} message={}", request.getRequestURI(), exception.getMessage());
+        log.warn("Conflicto de negocio. ruta={} tipo={} mensaje={}",
+                request.getRequestURI(), exception.getClass().getSimpleName(), exception.getMessage());
         return response(HttpStatus.CONFLICT, exception.getMessage(), request);
     }
 
@@ -40,13 +42,15 @@ public class GlobalExceptionHandler {
             HttpMessageNotReadableException.class, MissingRequestHeaderException.class,
             IllegalArgumentException.class, InvalidIdempotencyKeyException.class})
     ResponseEntity<ApiErrorResponse> badRequest(Exception exception, HttpServletRequest request) {
-        log.warn("invalid shipment request path={} message={}", request.getRequestURI(), validationMessage(exception));
+        log.warn("Solicitud invalida. ruta={} tipo={} mensaje={}",
+                request.getRequestURI(), exception.getClass().getSimpleName(), validationMessage(exception));
         return response(HttpStatus.BAD_REQUEST, validationMessage(exception), request);
     }
 
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> unexpected(Exception exception, HttpServletRequest request) {
-        log.error("unhandled request error path={}", request.getRequestURI(), exception);
+        log.error("Error interno no controlado. ruta={} tipo={} mensaje={}",
+                request.getRequestURI(), exception.getClass().getSimpleName(), exception.getMessage(), exception);
         return response(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected internal error", request);
     }
 

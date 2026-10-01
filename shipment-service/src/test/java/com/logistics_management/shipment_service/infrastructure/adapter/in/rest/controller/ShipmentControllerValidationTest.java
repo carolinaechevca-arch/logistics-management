@@ -38,7 +38,9 @@ class ShipmentControllerValidationTest {
                                 "origin":"Medellín","destination":"Bogotá"}
                                 """))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.status").value(400));
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message")
+                        .value("customerEmail: El correo del cliente debe tener un formato valido"));
 
         verifyNoInteractions(createPort);
     }

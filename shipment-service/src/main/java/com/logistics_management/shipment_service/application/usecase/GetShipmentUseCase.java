@@ -16,9 +16,9 @@ public class GetShipmentUseCase implements GetShipmentPort {
 
     @Override
     public Shipment getById(UUID id) {
-        log.info("shipment lookup requested shipmentId={}", id);
+        log.info("Buscando envio. shipmentId={}", id);
         Shipment shipment = persistencePort.findById(id).orElseThrow(() -> new ShipmentNotFoundException(id));
-        log.info("shipment found shipmentId={} trackingNumber={} status={}",
+        log.info("Envio encontrado. shipmentId={} trackingNumber={} status={}",
                 shipment.getId(), shipment.getTrackingNumber(), shipment.getStatus());
         return shipment;
     }

@@ -21,15 +21,20 @@ public class MailNotificationAdapter implements NotificationSenderPort {
     @Override
     public void send(Notification notification) {
         try {
-            log.info("email delivery started subject={}", notification.getSubject());
+            log.info("Correo: preparando mensaje para el servidor SMTP. asunto={}",
+                    notification.getSubject());
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(properties.getFrom());
             message.setTo(notification.getRecipient());
             message.setSubject(notification.getSubject());
             message.setText(notification.getBody());
             mailSender.send(message);
-            log.info("email sent subject={}", notification.getSubject());
+            log.info("Correo: el servidor SMTP acepto el mensaje correctamente. "
+                    + "asunto={}", notification.getSubject());
         } catch (MailException exception) {
+            log.error("Correo: no fue posible enviar el mensaje. "
+                            + "asunto={} causa={} mensaje={}", notification.getSubject(),
+                    exception.getClass().getSimpleName(), exception.getMessage());
             throw new NotificationProcessingException("Could not send shipment notification", exception);
         }
     }

@@ -22,11 +22,12 @@ public class CancelShipmentUseCase implements CancelShipmentPort {
 
     @Override
     public Shipment cancel(UUID id) {
+        log.info("Iniciando cancelacion del envio. shipmentId={}", id);
         Shipment shipment = persistencePort.findById(id).orElseThrow(() -> new ShipmentNotFoundException(id));
         LocalDateTime now = LocalDateTime.now(clock);
         shipment.cancel(now);
         Shipment saved = persistencePort.save(shipment);
-        log.info("shipment cancelled shipmentId={} trackingNumber={} status={}",
+        log.info("Envio cancelado. shipmentId={} trackingNumber={} status={}",
                 saved.getId(), saved.getTrackingNumber(), saved.getStatus());
         eventPublisherPort.publish(ShipmentEventFactory.create(saved, ShipmentEventType.SHIPMENT_CANCELLED, now));
         return saved;

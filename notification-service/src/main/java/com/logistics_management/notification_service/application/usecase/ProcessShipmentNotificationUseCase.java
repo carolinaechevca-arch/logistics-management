@@ -23,22 +23,29 @@ public class ProcessShipmentNotificationUseCase implements ProcessShipmentNotifi
     @Override
     public void process(ShipmentEvent event) {
         validate(event);
-        log.info("notification processing started eventId={} shipmentId={} trackingNumber={} eventType={}",
+        log.info("Procesando evento de notificacion. "
+                        + "eventId={} shipmentId={} trackingNumber={} eventType={}",
                 event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), event.getEventType());
         if (processedEventIds.contains(event.getEventId())) {
-            log.info("duplicate event ignored eventId={} shipmentId={} trackingNumber={}",
+            log.info("Idempotencia: evento duplicado detectado. "
+                            + "No se enviara otro correo. eventId={} shipmentId={} trackingNumber={}",
                     event.getEventId(), event.getShipmentId(), event.getTrackingNumber());
             return;
         }
         if (FAILURE_EMAIL.equalsIgnoreCase(event.getCustomerEmail())) {
-            log.warn("laboratory notification failure eventId={} shipmentId={} trackingNumber={}",
+            log.warn("Prueba de fallo: se activo el error controlado para probar reintentos. "
+                            + "eventId={} shipmentId={} trackingNumber={}",
                     event.getEventId(), event.getShipmentId(), event.getTrackingNumber());
             throw new NotificationProcessingException("Laboratory failure requested for event " + event.getEventId());
         }
         Notification notification = createNotification(event);
+        log.info("Notificacion construida; solicitando envio de correo. "
+                        + "eventId={} shipmentId={} asunto={}",
+                event.getEventId(), event.getShipmentId(), notification.getSubject());
         senderPort.send(notification);
         processedEventIds.add(event.getEventId());
-        log.info("processing successful eventId={} shipmentId={} trackingNumber={} eventType={}",
+        log.info("Evento procesado e identificado como completado. "
+                        + "eventId={} shipmentId={} trackingNumber={} eventType={}",
                 event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), event.getEventType());
     }
 
@@ -46,6 +53,8 @@ public class ProcessShipmentNotificationUseCase implements ProcessShipmentNotifi
         if (event == null || event.getEventId() == null || event.getEventType() == null
                 || event.getShipmentId() == null || event.getCustomerEmail() == null
                 || event.getCustomerEmail().isBlank()) {
+            log.error("Validacion: el evento no tiene todos los campos obligatorios. "
+                    + "Se iniciara el mecanismo de reintentos.");
             throw new NotificationProcessingException("Invalid shipment event payload");
         }
     }

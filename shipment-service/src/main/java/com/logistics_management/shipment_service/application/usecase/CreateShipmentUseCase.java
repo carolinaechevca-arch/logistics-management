@@ -29,15 +29,23 @@ public class CreateShipmentUseCase implements CreateShipmentPort {
     @Override
     public synchronized Shipment create(CreateShipmentCommand command) {
         String idempotencyKey = normalizeIdempotencyKey(command.idempotencyKey());
+        log.info("Validando la clave de idempotencia. idempotencyKey={}",
+                idempotencyKey);
         Shipment existing = persistencePort.findByIdempotencyKey(idempotencyKey).orElse(null);
         if (existing != null) {
             if (!matches(existing, command)) {
+                log.warn("Idempotencia: conflicto porque la clave ya existe con datos diferentes. "
+                                + "idempotencyKey={} shipmentId={} trackingNumber={}",
+                        idempotencyKey, existing.getId(), existing.getTrackingNumber());
                 throw new IdempotencyKeyConflictException(idempotencyKey);
             }
-            log.info("idempotent shipment creation replayed shipmentId={} trackingNumber={}",
-                    existing.getId(), existing.getTrackingNumber());
+            log.info("Idempotencia: solicitud repetida detectada. Se devuelve el envio existente "
+                            + "y NO se guarda ni se publica otro evento. idempotencyKey={} shipmentId={} trackingNumber={}",
+                    idempotencyKey, existing.getId(), existing.getTrackingNumber());
             return existing;
         }
+        log.info("Idempotencia: la clave es nueva; se continuara con la creacion. idempotencyKey={}",
+                idempotencyKey);
         LocalDateTime now = LocalDateTime.now(clock);
         String trackingNumber = generateUniqueTrackingNumber();
         Shipment shipment = Shipment.builder()
@@ -54,8 +62,11 @@ public class CreateShipmentUseCase implements CreateShipmentPort {
                 .updatedAt(now)
                 .build();
         Shipment saved = persistencePort.save(shipment);
-        log.info("shipment created shipmentId={} trackingNumber={} status={}",
+        log.info("Envio creado correctamente. "
+                        + "shipmentId={} trackingNumber={} status={}",
                 saved.getId(), saved.getTrackingNumber(), saved.getStatus());
+        log.info("Solicitando la publicacion del evento SHIPMENT_CREATED. "
+                        + "shipmentId={} trackingNumber={}", saved.getId(), saved.getTrackingNumber());
         eventPublisherPort.publish(ShipmentEventFactory.create(saved, ShipmentEventType.SHIPMENT_CREATED, now));
         return saved;
     }

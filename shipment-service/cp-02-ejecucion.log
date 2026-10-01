@@ -1,0 +1,174 @@
+Initialized native services in: /Users/carolinaecheverri/.gradle/native
+Initialized jansi services in: /Users/carolinaecheverri/.gradle/native
+The client will now receive all logging from the daemon (pid: 92815). The daemon log file: /Users/carolinaecheverri/.gradle/daemon/9.7.1/daemon-92815.out.log
+Starting 6th build in daemon [uptime: 1 hrs 59 mins 41.976 secs, performance: 100%, GC rate: 0.00/s, heap usage: 4% of 512 MiB, non-heap usage: 17% of 384 MiB]
+Using 10 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, isolatedProjectsDiagnostics=false, isolatedProjectsDangerouslyIgnoreProblems=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=false, vintage=true}
+Now considering [/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/settings.gradle'.
+Projects loaded. Root project using build file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build.gradle'.
+Included projects: [root project 'shipment-service']
+
+> Configure project :
+Evaluating root project 'shipment-service' using build file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build.gradle'.
+Resolved plugin [id: 'java']
+Resolved plugin [id: 'org.springframework.boot', version: '4.1.1']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Applying dependency management to configuration 'annotationProcessor' in project 'shipment-service'
+Applying dependency management to configuration 'apiElements' in project 'shipment-service'
+Applying dependency management to configuration 'archives' in project 'shipment-service'
+Applying dependency management to configuration 'bootArchives' in project 'shipment-service'
+Applying dependency management to configuration 'compileClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'compileOnly' in project 'shipment-service'
+Applying dependency management to configuration 'default' in project 'shipment-service'
+Applying dependency management to configuration 'developmentOnly' in project 'shipment-service'
+Applying dependency management to configuration 'implementation' in project 'shipment-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'shipment-service'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeElements' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'shipment-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testImplementation' in project 'shipment-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'shipment-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'shipment-service'
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'test'
+Selected primary task 'clean' from project :
+Selected primary task 'test' from project :
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/carolinaecheverri/.gradle/daemon/9.7.1 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Resolving global dependency management for project 'shipment-service'
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Tasks to be executed: [task ':clean', task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test']
+Tasks that were excluded: []
+Resolve mutations for :clean (Thread[#447,Execution worker,5,main]) started.
+:clean (Thread[#447,Execution worker,5,main]) started.
+destroyer locations for task group 0 (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Build cache is disabled
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :compileJava (Thread[#448,Execution worker Thread 2,5,main]) started.
+:compileJava (Thread[#448,Execution worker Thread 2,5,main]) started.
+This JVM does not support getting OS memory, so no OS memory status updates will be broadcast
+
+> Task :compileJava
+Custom actions are attached to task ':compileJava'.
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Task ':compileJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main/com has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main/com/logistics_management has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileJava'.
+Compilation mode: default, forking compiler
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home'.
+Log level has changed, stopping idle worker daemon with out-of-date log level.
+Starting process 'Gradle Worker Daemon 9'. Working directory: /Users/carolinaecheverri/.gradle/workers Command: /Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED @/Users/carolinaecheverri/.gradle/.tmp/gradle-worker-classpath10433772873728224586txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CO -Duser.language=es -Duser.variant worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Worker Daemon 9'
+Successfully started process 'Gradle Worker Daemon 9'
+Started Gradle worker daemon (0.138 secs) with fork options DaemonForkOptions{executable=/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java, minHeapSize=null, maxHeapSize=null, jvmArgs=[--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED, --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED], keepAliveMode=DAEMON}.
+Compiling with JDK Java compiler API.
+Class dependency analysis for incremental compilation took 0.002 secs.
+Created classpath snapshot for incremental compilation in 0.006 secs.
+Resolve mutations for :processResources (Thread[#448,Execution worker Thread 2,5,main]) started.
+:processResources (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :processResources
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+  Not worth caching
+Task ':processResources' is not up-to-date because:
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main has been removed.
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main/application.yaml has been removed.
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main/static has been removed.
+  and more...
+Resolve mutations for :classes (Thread[#448,Execution worker Thread 2,5,main]) started.
+:classes (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :classes
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :compileTestJava (Thread[#448,Execution worker Thread 2,5,main]) started.
+:compileTestJava (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :compileTestJava
+Custom actions are attached to task ':compileTestJava'.
+Caching disabled for task ':compileTestJava' because:
+  Build cache is disabled
+Task ':compileTestJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test/com has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test/com/logistics_management has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileTestJava'.
+Compilation mode: default, forking compiler
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home'.
+Compiling with JDK Java compiler API.
+Class dependency analysis for incremental compilation took 0.0 secs.
+Created classpath snapshot for incremental compilation in 0.01 secs.
+Resolve mutations for :processTestResources (Thread[#448,Execution worker Thread 2,5,main]) started.
+:processTestResources (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :processTestResources NO-SOURCE
+Skipping task ':processTestResources' as it has no source files and no previous output files.
+Resolve mutations for :testClasses (Thread[#448,Execution worker Thread 2,5,main]) started.
+:testClasses (Thread[#448,Execution worker Thread 2,5,main]) started.
+
+> Task :testClasses
+Skipping task ':testClasses' as it has no actions.
+Resolve mutations for :test (Thread[#448,Execution worker Thread 2,5,main]) started.
+:test (Thread[#448,Execution worker Thread 2,5,main]) started.
+Gradle Test Executor 10 started executing tests.
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Gradle Test Executor 10 finished executing tests.
+
+> Task :test
+Caching disabled for task ':test' because:
+  Build cache is disabled
+Task ':test' is not up-to-date because:
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary has been removed.
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary/output-events.bin has been removed.
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary/results-generic.bin has been removed.
+  and more...
+Starting process 'Gradle Test Executor 10'. Working directory: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service Command: /Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java -Dorg.gradle.internal.worker.tmpdir=/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/tmp/test/work @/Users/carolinaecheverri/.gradle/.tmp/gradle-worker-classpath848492857781312250txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CO -Duser.language=es -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 10'
+Successfully started process 'Gradle Test Executor 10'
+
+ShipmentControllerValidationTest > invalidEmailReturnsBadRequestWithoutCallingUseCase() STANDARD_ERROR
+    Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    WARNING: A Java agent has been loaded dynamically (/Users/carolinaecheverri/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.11/82212e5b3633e7a65fca8bec525762cfb6c9bae4/byte-buddy-agent-1.18.11.jar)
+    WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    WARNING: Dynamic loading of agents will be disallowed by default in a future release
+
+ShipmentControllerValidationTest > invalidEmailReturnsBadRequestWithoutCallingUseCase() STANDARD_OUT
+    17:41:50.458 [Test worker] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 9.1.3.Final
+    17:41:50.560 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+    17:41:50.561 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+    17:41:50.562 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+    17:41:50.647 [Test worker] WARN com.logistics_management.shipment_service.infrastructure.adapter.in.rest.controller.GlobalExceptionHandler -- Solicitud invalida. ruta=/api/v1/shipments tipo=MethodArgumentNotValidException mensaje=customerEmail: must be a well-formed email address
+Generating HTML test report...
+Finished generating test html results (0.002 secs) into: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/reports/tests/test
+Finished generating test XML results (0.0 secs) into: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test
+
+BUILD SUCCESSFUL in 3s
+5 actionable tasks: 5 executed
+Watched directory hierarchies: [/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service]
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

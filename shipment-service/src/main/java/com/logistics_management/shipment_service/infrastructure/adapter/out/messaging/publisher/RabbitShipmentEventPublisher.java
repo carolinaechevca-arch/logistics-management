@@ -16,8 +16,23 @@ public class RabbitShipmentEventPublisher implements ShipmentEventPublisherPort 
 
     @Override
     public void publish(ShipmentEvent event) {
-        rabbitTemplate.convertAndSend(RabbitTopology.EXCHANGE, RabbitTopology.ROUTING_KEY, event);
-        log.info("event published eventId={} shipmentId={} trackingNumber={} eventType={}",
-                event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), event.getEventType());
+        log.info("Productor RabbitMQ: publicando evento. exchange={} routingKey={} "
+                        + "evento={{eventId={}, eventType={}, shipmentId={}, trackingNumber={}, status={}, "
+                        + "origin={}, destination={}, occurredAt={}}}",
+                RabbitTopology.EXCHANGE, RabbitTopology.ROUTING_KEY, event.getEventId(), event.getEventType(),
+                event.getShipmentId(), event.getTrackingNumber(), event.getStatus(), event.getOrigin(),
+                event.getDestination(), event.getOccurredAt());
+        try {
+            rabbitTemplate.convertAndSend(RabbitTopology.EXCHANGE, RabbitTopology.ROUTING_KEY, event);
+            log.info("Productor RabbitMQ: evento entregado correctamente. "
+                            + "eventId={} shipmentId={} trackingNumber={} eventType={}",
+                    event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), event.getEventType());
+        } catch (RuntimeException exception) {
+            log.error("Productor RabbitMQ: no fue posible publicar el evento. "
+                            + "eventId={} shipmentId={} causa={} mensaje={}",
+                    event.getEventId(), event.getShipmentId(), exception.getClass().getSimpleName(),
+                    exception.getMessage());
+            throw exception;
+        }
     }
 }

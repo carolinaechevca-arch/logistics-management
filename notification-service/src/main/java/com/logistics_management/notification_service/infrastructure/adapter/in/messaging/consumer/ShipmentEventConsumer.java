@@ -24,19 +24,32 @@ public class ShipmentEventConsumer {
                 ? "invalid-" + System.identityHashCode(event)
                 : event.getEventId().toString();
         int attempt = processingAttempts.merge(attemptKey, 1, Integer::sum);
-        log.info("event received eventId={} shipmentId={} trackingNumber={} eventType={}",
-                event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), event.getEventType());
-        log.info("notification processing attempt {}/{} eventId={} shipmentId={} trackingNumber={}",
+        log.info("Consumidor RabbitMQ: evento recibido. cola={} "
+                        + "evento={{eventId={}, eventType={}, shipmentId={}, trackingNumber={}, status={}, "
+                        + "origin={}, destination={}, occurredAt={}}}",
+                RabbitTopology.QUEUE, event.getEventId(), event.getEventType(), event.getShipmentId(),
+                event.getTrackingNumber(), event.getStatus(), event.getOrigin(), event.getDestination(),
+                event.getOccurredAt());
+        log.info("Reintento: iniciando intento {}/{}. "
+                        + "eventId={} shipmentId={} trackingNumber={}",
                 attempt, RabbitTopology.MAX_PROCESSING_ATTEMPTS,
                 event.getEventId(), event.getShipmentId(), event.getTrackingNumber());
         try {
             processPort.process(event);
+            log.info("Consumidor RabbitMQ: intento {}/{} completado. "
+                            + "RabbitMQ confirmara el mensaje (ACK). eventId={} shipmentId={}",
+                    attempt, RabbitTopology.MAX_PROCESSING_ATTEMPTS, event.getEventId(), event.getShipmentId());
             processingAttempts.remove(attemptKey);
         } catch (RuntimeException exception) {
-            log.error("notification processing attempt {}/{} failed eventId={} shipmentId={} trackingNumber={}",
+            log.error("Reintento: fallo el intento {}/{}. "
+                            + "eventId={} shipmentId={} trackingNumber={} causa={} mensaje={}",
                     attempt, RabbitTopology.MAX_PROCESSING_ATTEMPTS,
-                    event.getEventId(), event.getShipmentId(), event.getTrackingNumber(), exception);
+                    event.getEventId(), event.getShipmentId(), event.getTrackingNumber(),
+                    exception.getClass().getSimpleName(), exception.getMessage());
             if (attempt >= RabbitTopology.MAX_PROCESSING_ATTEMPTS) {
+                log.error("DLQ: se agotaron los {} intentos. "
+                                + "El mensaje sera rechazado sin reencolar y enviado a la DLQ. eventId={} shipmentId={}",
+                        RabbitTopology.MAX_PROCESSING_ATTEMPTS, event.getEventId(), event.getShipmentId());
                 processingAttempts.remove(attemptKey);
             }
             throw exception;

@@ -23,11 +23,12 @@ public class DeliverShipmentUseCase implements DeliverShipmentPort {
 
     @Override
     public Shipment deliver(UUID id) {
+        log.info("Iniciando cambio de estado a DELIVERED. shipmentId={}", id);
         Shipment shipment = persistencePort.findById(id).orElseThrow(() -> new ShipmentNotFoundException(id));
         LocalDateTime now = LocalDateTime.now(clock);
         shipment.transitionTo(ShipmentStatus.DELIVERED, now);
         Shipment saved = persistencePort.save(shipment);
-        log.info("shipment delivered shipmentId={} trackingNumber={} status={}",
+        log.info("Envio entregado. shipmentId={} trackingNumber={} status={}",
                 saved.getId(), saved.getTrackingNumber(), saved.getStatus());
         eventPublisherPort.publish(ShipmentEventFactory.create(saved, ShipmentEventType.SHIPMENT_DELIVERED, now));
         return saved;
