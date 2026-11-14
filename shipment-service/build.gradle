@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'jacoco'
 	id 'org.springframework.boot' version '4.1.1'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -38,4 +39,58 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy tasks.named('jacocoTestReport')
+}
+
+jacoco {
+	toolVersion = '0.8.14'
+}
+
+def unitCoverageIncludes = [
+	'**/application/usecase/**',
+	'**/domain/model/Shipment.class',
+	'**/infrastructure/adapter/in/rest/controller/**',
+	'**/infrastructure/adapter/in/rest/mapper/**',
+	'**/infrastructure/adapter/out/messaging/config/RabbitConfig.class',
+	'**/infrastructure/adapter/out/messaging/publisher/**',
+	'**/infrastructure/adapter/out/persistence/adapter/**',
+	'**/infrastructure/adapter/out/persistence/mapper/**',
+	'**/infrastructure/config/**'
+]
+
+tasks.named('jacocoTestReport') {
+	dependsOn tasks.named('test')
+	classDirectories.setFrom(files(classDirectories.files.collect {
+		fileTree(dir: it, include: unitCoverageIncludes)
+	}))
+	reports {
+		xml.required = true
+		html.required = true
+		csv.required = false
+	}
+}
+
+tasks.named('jacocoTestCoverageVerification') {
+	dependsOn tasks.named('test')
+	classDirectories.setFrom(files(classDirectories.files.collect {
+		fileTree(dir: it, include: unitCoverageIncludes)
+	}))
+	violationRules {
+		rule {
+			limit {
+				counter = 'LINE'
+				value = 'COVEREDRATIO'
+				minimum = 0.90
+			}
+			limit {
+				counter = 'BRANCH'
+				value = 'COVEREDRATIO'
+				minimum = 0.90
+			}
+		}
+	}
+}
+
+tasks.named('check') {
+	dependsOn tasks.named('jacocoTestCoverageVerification')
 }
