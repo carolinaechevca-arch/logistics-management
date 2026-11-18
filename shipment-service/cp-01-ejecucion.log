@@ -1,0 +1,264 @@
+Initialized native services in: /Users/carolinaecheverri/.gradle/native
+Initialized jansi services in: /Users/carolinaecheverri/.gradle/native
+The client will now receive all logging from the daemon (pid: 85178). The daemon log file: /Users/carolinaecheverri/.gradle/daemon/9.7.1/daemon-85178.out.log
+Starting 3rd build in daemon [uptime: 16 mins 29.255 secs, performance: 100%, GC rate: 0.00/s, heap usage: 4% of 512 MiB, non-heap usage: 15% of 384 MiB]
+Using 10 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, isolatedProjectsDiagnostics=false, isolatedProjectsDangerouslyIgnoreProblems=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=false, vintage=true}
+Now considering [/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/settings.gradle'.
+Projects loaded. Root project using build file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build.gradle'.
+Included projects: [root project 'shipment-service']
+
+> Configure project :
+Evaluating root project 'shipment-service' using build file '/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build.gradle'.
+Resolved plugin [id: 'java']
+Resolved plugin [id: 'org.springframework.boot', version: '4.1.1']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Applying dependency management to configuration 'annotationProcessor' in project 'shipment-service'
+Applying dependency management to configuration 'apiElements' in project 'shipment-service'
+Applying dependency management to configuration 'archives' in project 'shipment-service'
+Applying dependency management to configuration 'bootArchives' in project 'shipment-service'
+Applying dependency management to configuration 'compileClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'compileOnly' in project 'shipment-service'
+Applying dependency management to configuration 'default' in project 'shipment-service'
+Applying dependency management to configuration 'developmentOnly' in project 'shipment-service'
+Applying dependency management to configuration 'implementation' in project 'shipment-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'shipment-service'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeElements' in project 'shipment-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'shipment-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'shipment-service'
+Applying dependency management to configuration 'testImplementation' in project 'shipment-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'shipment-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'shipment-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'shipment-service'
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'test'
+Selected primary task 'clean' from project :
+Selected primary task 'test' from project :
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/carolinaecheverri/.gradle/daemon/9.7.1 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Resolving global dependency management for project 'shipment-service'
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Tasks to be executed: [task ':clean', task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test']
+Tasks that were excluded: []
+Resolve mutations for :clean (Thread[#216,Execution worker,5,main]) started.
+:clean (Thread[#215,included builds,5,main]) started.
+destroyer locations for task group 0 (Thread[#217,Execution worker Thread 2,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Build cache is disabled
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :compileJava (Thread[#215,included builds,5,main]) started.
+:compileJava (Thread[#215,included builds,5,main]) started.
+This JVM does not support getting OS memory, so no OS memory status updates will be broadcast
+
+> Task :compileJava
+Custom actions are attached to task ':compileJava'.
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Task ':compileJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main/com has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/main/com/logistics_management has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileJava'.
+Compilation mode: default, forking compiler
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home'.
+Log level has changed, stopping idle worker daemon with out-of-date log level.
+Starting process 'Gradle Worker Daemon 4'. Working directory: /Users/carolinaecheverri/.gradle/workers Command: /Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED @/Users/carolinaecheverri/.gradle/.tmp/gradle-worker-classpath5682584014961050466txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CO -Duser.language=es -Duser.variant worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Worker Daemon 4'
+Successfully started process 'Gradle Worker Daemon 4'
+Started Gradle worker daemon (0.246 secs) with fork options DaemonForkOptions{executable=/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java, minHeapSize=null, maxHeapSize=null, jvmArgs=[--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED, --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED], keepAliveMode=DAEMON}.
+Compiling with JDK Java compiler API.
+Class dependency analysis for incremental compilation took 0.004 secs.
+Created classpath snapshot for incremental compilation in 0.054 secs.
+Resolve mutations for :processResources (Thread[#215,included builds,5,main]) started.
+:processResources (Thread[#215,included builds,5,main]) started.
+
+> Task :processResources
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+  Not worth caching
+Task ':processResources' is not up-to-date because:
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main has been removed.
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main/application.yaml has been removed.
+  Output property 'destinationDir' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/resources/main/static has been removed.
+  and more...
+Resolve mutations for :classes (Thread[#215,included builds,5,main]) started.
+:classes (Thread[#215,included builds,5,main]) started.
+
+> Task :classes
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :compileTestJava (Thread[#215,included builds,5,main]) started.
+:compileTestJava (Thread[#224,Execution worker Thread 9,5,main]) started.
+
+> Task :compileTestJava
+Custom actions are attached to task ':compileTestJava'.
+Caching disabled for task ':compileTestJava' because:
+  Build cache is disabled
+Task ':compileTestJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test/com has been removed.
+  Output property 'destinationDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/classes/java/test/com/logistics_management has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileTestJava'.
+Compilation mode: default, forking compiler
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home'.
+Compiling with JDK Java compiler API.
+Class dependency analysis for incremental compilation took 0.002 secs.
+Created classpath snapshot for incremental compilation in 0.027 secs.
+Resolve mutations for :processTestResources (Thread[#224,Execution worker Thread 9,5,main]) started.
+:processTestResources (Thread[#224,Execution worker Thread 9,5,main]) started.
+
+> Task :processTestResources NO-SOURCE
+Skipping task ':processTestResources' as it has no source files and no previous output files.
+Resolve mutations for :testClasses (Thread[#224,Execution worker Thread 9,5,main]) started.
+:testClasses (Thread[#224,Execution worker Thread 9,5,main]) started.
+
+> Task :testClasses
+Skipping task ':testClasses' as it has no actions.
+Resolve mutations for :test (Thread[#224,Execution worker Thread 9,5,main]) started.
+:test (Thread[#224,Execution worker Thread 9,5,main]) started.
+Gradle Test Executor 5 started executing tests.
+
+> Task :test
+Caching disabled for task ':test' because:
+  Build cache is disabled
+Task ':test' is not up-to-date because:
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary has been removed.
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary/output-events.bin has been removed.
+  Output property 'binaryResultsDirectory' file /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test/binary/results-generic.bin has been removed.
+  and more...
+Starting process 'Gradle Test Executor 5'. Working directory: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service Command: /Users/carolinaecheverri/Library/Java/JavaVirtualMachines/corretto-21.0.10/Contents/Home/bin/java -Dorg.gradle.internal.worker.tmpdir=/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/tmp/test/work @/Users/carolinaecheverri/.gradle/.tmp/gradle-worker-classpath9447577116005967846txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CO -Duser.language=es -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 5'
+Successfully started process 'Gradle Test Executor 5'
+
+Gradle Test Executor 5 STANDARD_OUT
+    06:45:00.867 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+    06:45:01.262 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/carolinaecheverri/.colima/default/docker.sock
+    06:45:01.262 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+    06:45:01.278 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+      Server Version: 29.2.1
+      API Version: 1.53
+      Operating System: Ubuntu 24.04.4 LTS
+      Total Memory: 5910 MB
+    06:45:01.282 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+    06:45:01.283 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+    06:45:01.687 [Test worker] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+    06:45:01.746 [Test worker] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: b6731f4ec3856119c589594b699a9bfeb9681d4869f88589083e1be5735a31d0
+    06:45:01.944 [Test worker] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.256476S
+    06:45:01.949 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+    06:45:01.949 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+    06:45:01.950 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+
+ShipmentInfrastructureIntegrationTest STANDARD_OUT
+    06:45:01.960 [Test worker] INFO tc.rabbitmq:4-alpine -- Creating container for image: rabbitmq:4-alpine
+    06:45:01.990 [Test worker] INFO tc.rabbitmq:4-alpine -- Container rabbitmq:4-alpine is starting: d7330f9e7c6eb64bbfec7116fc2530222043a7204c0caa459da5d0613a3f3cb5
+    06:45:04.185 [Test worker] INFO tc.rabbitmq:4-alpine -- Container rabbitmq:4-alpine started in PT2.225274S
+    06:45:04.186 [Test worker] INFO tc.postgres:17-alpine -- Creating container for image: postgres:17-alpine
+    06:45:04.215 [Test worker] INFO tc.postgres:17-alpine -- Container postgres:17-alpine is starting: d48e380671b4c2a70c66335dd83df71cc9d365948f486b2ef7f347afd3c692cd
+
+Not watching anything anymore
+
+> Task :test
+    06:45:04.996 [Test worker] INFO tc.postgres:17-alpine -- Container postgres:17-alpine started in PT0.810136S
+    06:45:04.997 [Test worker] INFO tc.postgres:17-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:32863/logistics?loggerLevel=OFF)
+    06:45:05.066 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.logistics_management.shipment_service.ShipmentInfrastructureIntegrationTest]: ShipmentInfrastructureIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    06:45:05.104 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.logistics_management.shipment_service.ShipmentServiceApplication for test class com.logistics_management.shipment_service.ShipmentInfrastructureIntegrationTest
+    06:45:05.126 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.logistics_management.shipment_service.ShipmentInfrastructureIntegrationTest]: ShipmentInfrastructureIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    06:45:05.127 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.logistics_management.shipment_service.ShipmentServiceApplication for test class com.logistics_management.shipment_service.ShipmentInfrastructureIntegrationTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::                (v4.1.1)
+
+    2026-10-05T06:45:05.243-05:00  INFO 87492 --- [shipment-service] [    Test worker] .s.ShipmentInfrastructureIntegrationTest : Starting ShipmentInfrastructureIntegrationTest using Java 21.0.10 with PID 87492 (started by carolinaecheverri in /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service)
+    2026-10-05T06:45:05.244-05:00  INFO 87492 --- [shipment-service] [    Test worker] .s.ShipmentInfrastructureIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+    2026-10-05T06:45:05.425-05:00  INFO 87492 --- [shipment-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2026-10-05T06:45:05.444-05:00  INFO 87492 --- [shipment-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interface.
+    2026-10-05T06:45:05.588-05:00  INFO 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+    2026-10-05T06:45:05.607-05:00  INFO 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+    2026-10-05T06:45:05.757-05:00  INFO 87492 --- [shipment-service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+    2026-10-05T06:45:05.771-05:00  INFO 87492 --- [shipment-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2026-10-05T06:45:05.844-05:00  INFO 87492 --- [shipment-service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3b7b099b
+    2026-10-05T06:45:05.845-05:00  INFO 87492 --- [shipment-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2026-10-05T06:45:05.882-05:00  INFO 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+    	Database JDBC URL [jdbc:postgresql://localhost:32863/logistics?loggerLevel=OFF]
+    	Database driver: PostgreSQL JDBC Driver
+    	Database dialect: PostgreSQLDialect
+    	Database version: 17.11
+    	Default catalog/schema: logistics/public
+    	Autocommit mode: undefined/unknown
+    	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+    	JDBC fetch size: none
+    	Pool: DataSourceConnectionProvider
+    	Minimum pool size: undefined/unknown
+    	Maximum pool size: undefined/unknown
+    2026-10-05T06:45:06.242-05:00  INFO 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    2026-10-05T06:45:06.294-05:00  WARN 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.jdbc.warn              : HHH000247: ErrorCode: 0, SQLState: 00000
+    2026-10-05T06:45:06.295-05:00  WARN 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.jdbc.warn              : constraint "uk75yatcfm0m451s9f6ok58cm6x" of relation "shipments" does not exist, skipping
+    2026-10-05T06:45:06.299-05:00  WARN 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.jdbc.warn              : HHH000247: ErrorCode: 0, SQLState: 00000
+    2026-10-05T06:45:06.299-05:00  WARN 87492 --- [shipment-service] [    Test worker] org.hibernate.orm.jdbc.warn              : constraint "uk2980t5kjkkrwnjhwvit59x61k" of relation "shipments" does not exist, skipping
+    2026-10-05T06:45:06.306-05:00  INFO 87492 --- [shipment-service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+    2026-10-05T06:45:06.343-05:00  INFO 87492 --- [shipment-service] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+    2026-10-05T06:45:06.526-05:00  INFO 87492 --- [shipment-service] [    Test worker] .s.ShipmentInfrastructureIntegrationTest : Started ShipmentInfrastructureIntegrationTest in 1.375 seconds (process running for 6.045)
+
+ShipmentInfrastructureIntegrationTest > creationPersistsShipmentAndPublishesCreatedEvent() STANDARD_ERROR
+    Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    WARNING: A Java agent has been loaded dynamically (/Users/carolinaecheverri/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.11/82212e5b3633e7a65fca8bec525762cfb6c9bae4/byte-buddy-agent-1.18.11.jar)
+    WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    WARNING: Dynamic loading of agents will be disallowed by default in a future release
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Gradle Test Executor 5 finished executing tests.
+2026-10-05T06:45:07.721-05:00  INFO 87492 --- [shipment-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-05T06:45:07.722-05:00  INFO 87492 --- [shipment-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-05T06:45:07.723-05:00  INFO 87492 --- [shipment-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+ShipmentInfrastructureIntegrationTest > creationPersistsShipmentAndPublishesCreatedEvent() STANDARD_OUT
+    2026-10-05T06:45:06.753-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Validando la clave de idempotencia. idempotencyKey=integration-create-1
+    2026-10-05T06:45:06.922-05:00  INFO 87492 --- [shipment-service] [    Test worker] l.s.i.a.o.p.a.ShipmentPersistenceAdapter : Persistencia e idempotencia: consulta terminada. idempotencyKey=integration-create-1 existe=false
+    2026-10-05T06:45:06.922-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Idempotencia: la clave es nueva; se continuara con la creacion. idempotencyKey=integration-create-1
+    2026-10-05T06:45:06.929-05:00  INFO 87492 --- [shipment-service] [    Test worker] l.s.i.a.o.p.a.ShipmentPersistenceAdapter : Persistencia: guardando envio en PostgreSQL. shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a trackingNumber=SHP-650CC6C372B3 status=CREATED
+    2026-10-05T06:45:06.949-05:00  INFO 87492 --- [shipment-service] [    Test worker] l.s.i.a.o.p.a.ShipmentPersistenceAdapter : Persistencia: envio guardado en PostgreSQL. shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a
+    2026-10-05T06:45:06.949-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Envio creado correctamente. shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a trackingNumber=SHP-650CC6C372B3 status=CREATED
+    2026-10-05T06:45:06.949-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Solicitando la publicacion del evento SHIPMENT_CREATED. shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a trackingNumber=SHP-650CC6C372B3
+    2026-10-05T06:45:06.949-05:00  INFO 87492 --- [shipment-service] [    Test worker] s.i.a.o.m.p.RabbitShipmentEventPublisher : Productor RabbitMQ: publicando evento. exchange=shipment.exchange routingKey=shipment.notification evento={{eventId=599b8cf8-3d4d-4a94-a19d-8774017da0a2, eventType=SHIPMENT_CREATED, shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a, trackingNumber=SHP-650CC6C372B3, status=CREATED, origin=Medellín, destination=Bogotá, occurredAt=2026-10-05T11:45:06.922881}}
+    2026-10-05T06:45:06.965-05:00  INFO 87492 --- [shipment-service] [    Test worker] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:32860]
+    2026-10-05T06:45:06.988-05:00  INFO 87492 --- [shipment-service] [    Test worker] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#3294b641:0/SimpleConnection@45e6b8fa [delegate=amqp://guest@127.0.0.1:32860/, localPort=50306]
+    2026-10-05T06:45:07.027-05:00  INFO 87492 --- [shipment-service] [    Test worker] s.i.a.o.m.p.RabbitShipmentEventPublisher : Productor RabbitMQ: evento entregado correctamente. eventId=599b8cf8-3d4d-4a94-a19d-8774017da0a2 shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a trackingNumber=SHP-650CC6C372B3 eventType=SHIPMENT_CREATED
+    2026-10-05T06:45:07.028-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Validando la clave de idempotencia. idempotencyKey=integration-create-1
+    2026-10-05T06:45:07.030-05:00  INFO 87492 --- [shipment-service] [    Test worker] l.s.i.a.o.p.a.ShipmentPersistenceAdapter : Persistencia e idempotencia: consulta terminada. idempotencyKey=integration-create-1 existe=true
+    2026-10-05T06:45:07.030-05:00  INFO 87492 --- [shipment-service] [    Test worker] c.l.s.a.usecase.CreateShipmentUseCase    : Idempotencia: solicitud repetida detectada. Se devuelve el envio existente y NO se guarda ni se publica otro evento. idempotencyKey=integration-create-1 shipmentId=5b850c5f-3563-43eb-ad75-10a9a2006c6a trackingNumber=SHP-650CC6C372B3
+Generating HTML test report...
+Finished generating test html results (0.003 secs) into: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/reports/tests/test
+Finished generating test XML results (0.0 secs) into: /Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service/build/test-results/test
+
+BUILD SUCCESSFUL in 10s
+5 actionable tasks: 5 executed
+Watched directory hierarchies: [/Users/carolinaecheverri/Documents/APIS/logistics-management/shipment-service]
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

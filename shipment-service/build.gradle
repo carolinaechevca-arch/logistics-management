@@ -1,6 +1,7 @@
 plugins {
 	id 'java'
 	id 'jacoco'
+	id 'org.sonarqube' version '7.6.0.18749'
 	id 'org.springframework.boot' version '4.1.1'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -93,4 +94,30 @@ tasks.named('jacocoTestCoverageVerification') {
 
 tasks.named('check') {
 	dependsOn tasks.named('jacocoTestCoverageVerification')
+}
+
+sonar {
+	properties {
+		property 'sonar.projectKey', 'logistics-shipment-service'
+		property 'sonar.projectName', 'Logistics Shipment Service'
+		property 'sonar.host.url', 'http://localhost:9000'
+		property 'sonar.coverage.jacoco.xmlReportPaths',
+				layout.buildDirectory.file('reports/jacoco/test/jacocoTestReport.xml').get().asFile.absolutePath
+		property 'sonar.coverage.exclusions', [
+				'**/ShipmentServiceApplication.java',
+				'**/application/port/**',
+				'**/domain/enums/**',
+				'**/domain/exception/**',
+				'**/domain/model/ShipmentEvent.java',
+				'**/domain/model/ShipmentPage.java',
+				'**/infrastructure/adapter/in/rest/dto/**',
+				'**/infrastructure/adapter/out/persistence/entity/**',
+				'**/infrastructure/adapter/out/persistence/repository/**',
+				'**/RabbitTopology.java'
+		].join(',')
+	}
+}
+
+tasks.named('sonar') {
+	dependsOn tasks.named('jacocoTestReport')
 }
