@@ -1,0 +1,15 @@
+
+services:
+  notification-service:
+    environment:
+      MAIL_HOST: mailpit
+      MAIL_PORT: 1025
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+      MAIL_SMTP_AUTH: "false"
+      MAIL_STARTTLS_ENABLE: "false"
+      MAIL_STARTTLS_REQUIRED: "false"
+      MAIL_FROM: no-reply@logistics.local
+    depends_on:
+      mailpit:
+        condition: service_healthy
