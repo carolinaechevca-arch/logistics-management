@@ -1,0 +1,15 @@
+name: logistics-k6
+services:
+  k6:
+    image: grafana/k6:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      BASE_URL: http://host.docker.internal:8080
+      K6_PROFILE: ${K6_PROFILE:-load}
+      K6_WEB_DASHBOARD: "true"
+      K6_WEB_DASHBOARD_EXPORT: /reports/k6/dashboard-${K6_PROFILE:-load}.html
+    volumes:
+      - ./k6:/scripts:ro
+      - ./reports/k6:/reports/k6
+    command: run --summary-export=/reports/k6/summary-${K6_PROFILE:-load}.json /scripts/shipments-load.js
